@@ -2,7 +2,7 @@ provider "aws" {
   region = "us-east-1"
 }
 resource "aws_instance" "web"{
-  ami   = "ami-081bb417559035fe8"
+  ami   = "ami-0aeeebd8d2ab47354"
   instance_type = "t2.micro"
   availability_zone = "ap-south-1b"
   associate_public_ip_address = "true"
