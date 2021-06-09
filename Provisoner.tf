@@ -13,13 +13,13 @@ resource "aws_instance" "web"{
   }
    provisioner "file" {
     source      = "script.sh"
-    destination = "/tmp/script.sh"
+    destination = "./script.sh"
   }
 
   provisioner "remote-exec" {
     inline = [
-      "chmod 775 /tmp/script.sh",
-      "sudo /tmp/script.sh",
+      "chmod 775 ./script.sh",
+      "sudo ./script.sh",
     ]
   }
   connection {
