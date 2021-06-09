@@ -4,7 +4,7 @@ provider "aws" {
 resource "aws_instance" "web"{
   ami   = "ami-0aeeebd8d2ab47354"
   instance_type = "t2.micro"
-  availability_zone = "ap-south-1b"
+  availability_zone = "us-east-1-bos-1a"
   associate_public_ip_address = "true"
   key_name = "bastion"
   tags = {
