@@ -6,7 +6,7 @@ resource "aws_instance" "web"{
   instance_type = "t2.micro"
   availability_zone = "ap-south-1b"
   associate_public_ip_address = "true"
-  key_name = "AWSAutomation"
+  key_name = "bastion"
   tags = {
 
     Name = "webserver"
@@ -26,7 +26,7 @@ resource "aws_instance" "web"{
     type = "ssh"
     user = "ec2-user"
     host = "${aws_instance.web.public_ip}"
-    private_key = file("AWSAutomation.pem")
+    private_key = file("bastion.pem")
     agent = false
     timeout = "2m"
   }
