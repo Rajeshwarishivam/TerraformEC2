@@ -18,5 +18,23 @@ module "ec2_cluster" {
   tags = {
     Terraform   = "true"
     Environment = "dev"
+    }
+  provisioner "file" {
+    source      = "script.sh"
+    destination = "/tmp/script.sh"
   }
+
+  provisioner "remote-exec" {
+    inline = [
+      "chmod 775 /tmp/script.sh",
+      "sudo /tmp/script.sh",
+    ]
+  }
+  connection {
+    type = "ssh"
+    user = "ec2-user"
+    host = "${my-cluster.public_ip}"
+    private_key = file("bastion.pem")
+    agent = false
+    timeout = "2m"
 }
